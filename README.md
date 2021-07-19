@@ -26,3 +26,4 @@
 - 결제에 대한 부분은 신경쓰지 않는다.
 
 ## 도메인 모델
+![영화 예매 시스템 도메인 모델](https://user-images.githubusercontent.com/65909160/126171229-21929eec-3352-4bd2-a9e6-d835dd96854a.PNG)
