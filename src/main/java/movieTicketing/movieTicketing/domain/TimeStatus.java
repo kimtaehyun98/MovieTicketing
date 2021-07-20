@@ -1,5 +1,5 @@
 package movieTicketing.movieTicketing.domain;
 
-public enum TicketStatus {
-    CANCEL, WATCH
+public enum TimeStatus {
+    OVER, YET
 }

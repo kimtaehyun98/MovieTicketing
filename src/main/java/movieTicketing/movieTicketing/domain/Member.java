@@ -3,13 +3,14 @@ package movieTicketing.movieTicketing.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 import static javax.persistence.FetchType.LAZY;
 
 @Getter @Setter
 @Entity
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+//@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member {
 
     @Id
@@ -17,11 +18,9 @@ public class Member {
     private String userId;
     private String userPw;
 
-    @Enumerated(EnumType.STRING)
-    private Grade grade; // 유저의 등급
     private Long cumulativeUsageAmount; // 누적 사용 금액
 
-    @OneToOne(fetch = LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "ticket_id")
-    private Tickets tickets;
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<Ticket> tickets = new ArrayList<>();
+
 }
