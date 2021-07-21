@@ -29,6 +29,18 @@ public class MemberService {
         }
     }
 
+    // login 체크 -> 존재하는 ID 인지 + ID에 맞는 비밀번호인지
+    public Boolean loginCheck(String id, String pw){
+        Member findMember = memberRepository.findOne(id);
+        System.out.println("name = " + findMember.getName());
 
+        if(findMember == null) { // 찾아봤는데 존재하지 않는다면
+            return false;
+        }
+        if(findMember.getUserPw().equals(pw) == false) {
+            return false;
+        }
+        return true;
+    }
 
 }

@@ -17,6 +17,7 @@ public class Member {
     @Column(name = "user_id")
     private String userId;
     private String userPw;
+    private String name;
 
     private Long cumulativeUsageAmount; // 누적 사용 금액
 
