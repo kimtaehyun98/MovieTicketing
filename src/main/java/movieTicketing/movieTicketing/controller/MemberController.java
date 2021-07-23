@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
@@ -25,13 +26,16 @@ public class MemberController {
     }
 
     @PostMapping("/login")
-    public String login(@Valid LoginForm form, BindingResult result){
-        System.out.println("ID = " + form.getId() + ", PW = " + form.getPw());
+    public String login(Model model, @Valid LoginForm form, BindingResult result){
+        // System.out.println("ID = " + form.getId() + ", PW = " + form.getPw());
         if(memberService.loginCheck(form.getId(), form.getPw()) == false) {
             // 경고창을 띄우고 싶은데 어떻게 해야 할까요
             return "start/login"; // error가 나면 다시 로그인 창으로 돌림
         }
-
+        LoginForm user = new LoginForm();
+        user.setId(form.getId());
+        user.setPw(form.getPw());
+        model.addAttribute("user", user);
         return "user/service";
     }
 
@@ -45,6 +49,7 @@ public class MemberController {
     public String create(@Valid MemberForm form, BindingResult result){
 
         if(result.hasErrors()) {
+            System.out.println("회원가입 오류 발생");
             return "start/newMember"; // error가 나도 다시 회원 가입으로 돌림
         }
 

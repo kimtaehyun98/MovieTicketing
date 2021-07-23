@@ -32,7 +32,6 @@ public class MemberService {
     // login 체크 -> 존재하는 ID 인지 + ID에 맞는 비밀번호인지
     public Boolean loginCheck(String id, String pw){
         Member findMember = memberRepository.findOne(id);
-        System.out.println("name = " + findMember.getName());
 
         if(findMember == null) { // 찾아봤는데 존재하지 않는다면
             return false;
@@ -41,6 +40,12 @@ public class MemberService {
             return false;
         }
         return true;
+    }
+
+    // 멤버 찾아오기 (Controller는 Service 계층에만 접근하게 하기 위해서 만듦)
+    public Member findOne(String id){
+        Member findMember = memberRepository.findOne(id);
+        return findMember;
     }
 
 }
