@@ -16,15 +16,24 @@
             <tr>
                 <th>영화관</th>
                 <th>제목</th>
-                <th>좌석 등급</th>
-                <th>가격</th>
                 <th>상영 시간</th>
+                <th>Economy 예약 좌석수</th>
+                <th>Standard 예약 좌석수</th>
+                <th>Prime 예약 좌석수</th>
+                <th>가격</th>
                 <th>상태</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="ticket : ${tickets}">
-                <td th:text="${ticket.theater.name}"></td>
+                <td th:text="${ticket.movie.theater}"></td>
+                <td th:text="${ticket.movie.movieName}"></td>
+                <td th:text="${ticket.movie.movieTime}"></td>
+                <td th:text="${ticket.economySeat}"></td>
+                <td th:text="${ticket.standardSeat}"></td>
+                <td th:text="${ticket.primeSeat}"></td>
+                <td th:text="${ticket.price}"></td>
+                <td th:text="${ticket.ticketStatus}"></td>
             </tr>
             </tbody>
         </table>

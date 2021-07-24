@@ -2,7 +2,9 @@ package movieTicketing.movieTicketing.service;
 
 import lombok.RequiredArgsConstructor;
 import movieTicketing.movieTicketing.domain.Member;
+import movieTicketing.movieTicketing.domain.Ticket;
 import movieTicketing.movieTicketing.repository.MemberRepository;
+import movieTicketing.movieTicketing.repository.TicketRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class MemberService {
 
     private final MemberRepository memberRepository;
+    private final TicketRepository ticketRepository;
 
     // 회원 가입
     @Transactional
@@ -48,4 +51,10 @@ public class MemberService {
         return findMember;
     }
 
+    // ticket 추가하기
+    public void pushTicket(String id, Long ticketId){
+        Member member = memberRepository.findOne(id);
+        Ticket ticket = ticketRepository.findOne(ticketId);
+        member.pushTicket(ticket);
+    }
 }

@@ -24,4 +24,7 @@ public class Member {
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Ticket> tickets = new ArrayList<>();
 
+    public void pushTicket(Ticket ticket){
+        tickets.add(ticket);
+    }
 }
