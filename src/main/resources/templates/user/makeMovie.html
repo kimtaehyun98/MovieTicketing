@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<style>
+ .fieldError {
+ border-color: #bd2130;
+ }
+</style>
+<body>
+<div class="container">
+  <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+  <form role="form" action="/service/makeMovie" th:object="${movieForm}"
+        method="post">
+    <div class="form-group">
+      <label th:for="movieName">영화 제목</label>
+      <input type="text" th:field="*{movieName}" class="form-control"placeholder="영화 제목을 입력하세요">
+    </div>
+    <div class="form-group">
+      <label th:for="theater">상영 극장</label>
+      <input type="text" th:field="*{theater}" class="form-control"
+             placeholder="상영하는 극장의 이름을 입력하세요">
+    </div>
+    <div class="form-group">
+      <label th:for="movieTime">상영 시간</label>
+      <input type="text" th:field="*{movieTime}" class="form-control"
+             placeholder="상영하는 시간을 입력하세요">
+    </div>
+    <div class="form-group">
+      <label th:for="economySeat">좌석수 - Economy</label>
+      <input type="text" th:field="*{economySeat}" class="form-control"
+             placeholder="Economy 좌석 수를 입력하세요">
+    </div>
+    <div class="form-group">
+      <label th:for="standardSeat">좌석수 - Standard</label>
+      <input type="text" th:field="*{standardSeat}" class="form-control"
+             placeholder="Standard 좌석 수를 입력하세요">
+    </div>
+    <div class="form-group">
+      <label th:for="primeSeat">좌석수 - Prime</label>
+      <input type="text" th:field="*{primeSeat}" class="form-control"
+             placeholder="Prime 좌석 수를 입력하세요">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <br/>
+  <div th:replace="fragments/footer :: footer" />
+</div> <!-- /container -->
+</body>
+</html>

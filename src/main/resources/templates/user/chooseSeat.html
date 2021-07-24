@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<style>
+ .fieldError {
+ border-color: #bd2130;
+ }
+</style>
+<body>
+<div class="container">
+  <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+  <div th:object="${movieForm}">
+    <p th:text="|영화 제목 : *{movieName}|">Name</p>
+    <p th:text="|상영 극장 : *{theater}|">Theater</p>
+    <p th:text="|상영 시간 : *{movieTime}|">Time</p>
+    <p th:text="|test용(지우기) : *{userId}|">userId</p>
+    <p th:text="|test용(지우기) : *{movieId}|">movieId</p>
+
+  </div>
+  <form role="form" th:action="@{/service/{userId}/{movieId}/ticketingSuccess (userId = ${userId}, movieId = ${movieId})}" th:object="${movieForm}"
+        method="post">
+    <div class="form-group">
+      <label th:for="Economy">Economy</label>
+      <input type="text" th:field="*{economySeat}" class="form-control"placeholder="Economy 예약 수">
+    </div>
+    <div class="form-group">
+      <label th:for="Standard">Standard</label>
+      <input type="text" th:field="*{standardSeat}" class="form-control"placeholder="Standard 예약 수">
+    </div>
+    <div class="form-group">
+      <label th:for="Prime">Prime</label>
+      <input type="text" th:field="*{primeSeat}" class="form-control"placeholder="Prime 예약 수">
+    </div>
+    <button type="submit" class="btn btn-primary">예매하기</button>
+  </form>
+  <br/>
+  <div th:replace="fragments/footer :: footer" />
+</div> <!-- /container -->
+</body>
+</html>

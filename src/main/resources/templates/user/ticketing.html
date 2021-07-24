@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: header" />
+<body>
+<div class="container">
+    <div th:replace="fragments/bodyHeader :: bodyHeader"/>
+    <div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>영화 제목</th>
+                <th>상영 극장</th>
+                <th>상영 시간</th>
+                <th>Economy</th>
+                <th>Standard</th>
+                <th>Prime</th>
+            </tr>
+            </thead>
+            <tbody> <tr th:each="movie : ${movies}">
+                <td th:text="${movie.movieName}"></td>
+                <td th:text="${movie.theater}"></td>
+                <td th:text="${movie.movieTime}"></td>
+                <td th:text="${movie.economySeat}"></td>
+                <td th:text="${movie.standardSeat}"></td>
+                <td th:text="${movie.primeSeat}"></td>
+                <td>
+                    <a href="#" th:href="@{/service/{userId}/{movieId}/chooseSeat (userId=${userId} , movieId = ${movie.id})}"
+                       class="btn btn-primary" role="button">예매</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div th:replace="fragments/footer :: footer"/>
+</div> <!-- /container -->
+</body>
+</html>
