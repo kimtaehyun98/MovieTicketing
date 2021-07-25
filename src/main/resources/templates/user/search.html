@@ -33,10 +33,24 @@
                 <td th:text="${ticket.standardSeat}"></td>
                 <td th:text="${ticket.primeSeat}"></td>
                 <td th:text="${ticket.price}"></td>
-                <td th:text="${ticket.ticketStatus}"></td>
+                <td th:text="${ticket.ticketStatus.name()}"></td>
+                <td>
+                    <a th:if="${ticket.ticketStatus.name() == 'WATCH'}" href="#"
+                       th:href="'javascript:cancel('+${ticket.id}+')'"
+                       class="btn btn-danger">CANCEL</a>
+                </td>
             </tr>
             </tbody>
         </table>
+        <script>
+            function cancel(ticketId) {
+                var form = document.createElement("form");
+                form.setAttribute("method", "post");
+                form.setAttribute("action", "/service/" + ticketId +  "/cancel");
+                document.body.appendChild(form);
+                form.submit();
+            }
+        </script>
     </div>
 
 </div> <!-- /container --></body>

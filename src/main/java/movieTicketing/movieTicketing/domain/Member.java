@@ -27,4 +27,5 @@ public class Member {
     public void pushTicket(Ticket ticket){
         tickets.add(ticket);
     }
+
 }

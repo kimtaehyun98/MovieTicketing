@@ -31,6 +31,7 @@ public class ServiceController {
         // System.out.println("userId : " + id);
         Member member = memberService.findOne(id);
         model.addAttribute("tickets", member.getTickets());
+        model.addAttribute("userId", id);
         return "user/search";
     }
 
@@ -98,5 +99,11 @@ public class ServiceController {
         user.setId(id);
         model.addAttribute("user", user);
         return "user/service";
+    }
+
+    @PostMapping("service/{ticketId}/cancel")
+    public String cancel(@PathVariable ("ticketId") Long ticketId, @Valid MovieForm form, Model model){
+        ticketService.cancelTicket(ticketId);
+        return "redirect:/";
     }
 }
