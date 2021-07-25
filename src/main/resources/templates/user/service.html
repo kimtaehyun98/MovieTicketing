@@ -14,7 +14,7 @@
     <p>
       <a href="#" th:href="@{/service/{id}/search (id=${user.id})}" class="btn btn-lg btn-secondary" role="button">조회</a>
       <a href="#" th:href="@{/service/{id}/ticketing (id=${user.id})}" class="btn btn-lg btn-dark" role="button">예매</a>
-      <a href="#" th:href="@{/service/makeMovie}" class="btn btn-lg btn-dark" role="button">영화 생성</a>
+      <a href="#" th:href="@{/service/{id}/makeMovie (id=${user.id})}" class="btn btn-lg btn-dark" role="button">영화 생성</a>
     </p>
   </div>
 

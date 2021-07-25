@@ -1,6 +1,7 @@
 package movieTicketing.movieTicketing.controller;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
 import movieTicketing.movieTicketing.domain.Member;
 import movieTicketing.movieTicketing.domain.Movie;
 import movieTicketing.movieTicketing.domain.Ticket;
@@ -80,8 +81,11 @@ public class ServiceController {
     }
 
     @GetMapping("service/{userId}/makeMovie")
-    public String getMovie(Model model){
+    public String getMovie(@PathVariable ("userId") String id, Model model){
         model.addAttribute("movieForm", new MovieForm());
+        LoginForm loginForm = new LoginForm();
+        loginForm.setId(id);
+        model.addAttribute("loginForm", loginForm);
         return "user/makeMovie";
     }
 

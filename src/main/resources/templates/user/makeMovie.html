@@ -9,7 +9,7 @@
 <body>
 <div class="container">
   <div th:replace="fragments/bodyHeader :: bodyHeader"/>
-  <form role="form" action="/service/makeMovie" th:object="${movieForm}"
+  <form role="form" th:action="@{/service/{userId}/makeMovie (userId = ${loginForm.id})}" th:object="${movieForm}"
         method="post">
     <div class="form-group">
       <label th:for="movieName">영화 제목</label>

@@ -13,8 +13,6 @@
     <p th:text="|영화 제목 : *{movieName}|">Name</p>
     <p th:text="|상영 극장 : *{theater}|">Theater</p>
     <p th:text="|상영 시간 : *{movieTime}|">Time</p>
-    <p th:text="|test용(지우기) : *{userId}|">userId</p>
-    <p th:text="|test용(지우기) : *{movieId}|">movieId</p>
 
   </div>
   <form role="form" th:action="@{/service/{userId}/{movieId}/ticketingSuccess (userId = ${userId}, movieId = ${movieId})}" th:object="${movieForm}"
